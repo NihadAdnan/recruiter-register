@@ -5,14 +5,21 @@ import { IndustryTypeComponent } from '../../components/industry-type/industry-t
 import { CompanyAddressComponent } from '../../components/company-address/company-address.component';
 import { DisabilityInclusionComponent } from '../../components/disability-inclusion/disability-inclusion.component';
 import { FormsModule } from '@angular/forms';
+import { CaptchaComponent } from "../../components/captcha/captcha.component";
 
 @Component({
   selector: 'app-create-account-page',
   standalone: true,
-  imports: [AppComponent,InputFieldComponent,IndustryTypeComponent,CompanyAddressComponent,DisabilityInclusionComponent,FormsModule],
+  imports: [AppComponent, InputFieldComponent, IndustryTypeComponent, CompanyAddressComponent, DisabilityInclusionComponent, FormsModule, CaptchaComponent],
   templateUrl: './create-account-page.component.html',
   styleUrl: './create-account-page.component.scss'
 })
 export class CreateAccountPageComponent {
   facilitiesForDisabilities:boolean = false;
+  isPolicyAccepted: boolean = false;
+
+
+  onContinue() {
+    this.isPolicyAccepted = true;
+    }
 }
