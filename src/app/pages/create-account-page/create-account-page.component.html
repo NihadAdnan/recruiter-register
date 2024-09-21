@@ -50,7 +50,7 @@
       <hr>
   
       <!-- Company Details Information -->
-      <section class="mt-6">
+      <section class="my-6">
         <h3 class="text-[#337ab7] mt-0 mb-7 text-xl font-semibold">Company Details Information</h3>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <!-- comapny name english -->
@@ -116,7 +116,198 @@
          <div>
           <app-industry-type></app-industry-type>
          </div>
+         <!-- Business Description -->
+         <label for="txtDescription" class="text-black font-semibold inline-block w-full mt-3 max-w-full font-sans text-base mb-2.5 leading-[1.4286]">
+          Business Description
+      </label>
+      <textarea class="w-full p-1.5 text-sm leading-[1.4286] text-gray-700 bg-white border border-gray-300 rounded shadow-inner focus:outline-none focus:border-blue-500 focus:shadow-md resize-y" rows="4" name="txtDescription" id="txtDescription" placeholder="Write Business Description"></textarea>
+      
+      <!-- Business Trade and RL -->
+      <div class="flex flex-wrap -mx-4 mt-4">
+        <div class="w-full sm:w-1/2 px-4">
+            <div class="mb-4">
+                <app-input-field
+                label="Business/ Trade License No"
+                name="business_license_no"
+                id="business_license_no"
+                placeholder="Business/ Trade License No"
+                [maxLength]="30"
+                [value]="''"
+                [isRequired]="false">
+              </app-input-field>
+            </div>
+        </div>
+        <div class="w-full sm:w-1/2 px-4">
+            <div class="mb-4">
+              <div class="flex">
+                <span class="inline-flex items-center px-3 text-sm text-gray-500 bg-gray-100 border border-r-0 border-gray-300 rounded-l-md">RL -</span>
+                <app-input-field
+                label="RL No (Only for Recruiting Agency)"
+                name="rl_no"
+                id="rl_no"
+                placeholder="Enter Number Only"
+                [maxLength]="6"
+                [value]="''"
+                [isRequired]="false">
+              </app-input-field>
+              </div>
+            </div>
+        </div>
+        <div class="w-full px-4">
+            <div class="mb-4">
+                <app-input-field
+                label="Website URL"
+                name="website_url"
+                id="website_url"
+                placeholder="Type Website URL"
+                [maxLength]="50"
+                [value]="''"
+                [isRequired]="false">
+              </app-input-field>
+            </div>
+        </div>
+    </div>    
       </section>
       <hr>
+
+      <!-- Contact -->
+       <section class="my-6">
+        <h3 class="text-[#337ab7] mt-0 mb-7 text-xl font-semibold">Contact</h3>
+
+        <h4 class="mt-2.5 mb-5 text-lg font-bold leading-tight">Primary Contact</h4>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="col-span-1">
+            <app-input-field
+            label="Contact Person's Name"
+            name="txtContactPerson"
+            id="txtContactPerson"
+            placeholder="Type contact person's name"
+            [maxLength]="100"
+            [value]="''"
+            errorMessage="Person's Name is required">
+          </app-input-field>
+          </div>
+          <div class="col-span-1">
+            <app-input-field
+            label="Contact Person's Designation"
+            name="txtDesignation"
+            id="txtDesignation"
+            placeholder="Type contact person's designation"
+            [value]="''"
+            [maxLength]="100"
+            errorMessage="Person's designation is required"
+            >
+          </app-input-field>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+          <div class="col-span-1">
+            <app-input-field
+            label="Contact Person's Email"
+            name="txtContactEmail"
+            id="txtContactEmail"
+            placeholder="Type contact person's email"
+            [value]="''"
+            [maxLength]="45"
+            errorMessage="Person's Email is required"
+            >
+          </app-input-field>
+          </div>
+
+<div class="col-span-1">
+  <app-input-field
+  label="Contact Person's Mobile"
+  name="txtContactMobile"
+  id="txtContactMobile"
+  placeholder="Mobile number"
+  [value]="''"
+  [maxLength]="13"
+  [isRequired]="false"
+  >
+</app-input-field>
+</div>
+        </div>
+
+       </section>
+       <hr>
+
+       <!-- Accessibility Profile  -->
+        <section>
+        <div class="my-6">
+          <h3 class="text-[#337ab7] mt-0 mb-7 text-xl font-semibold">Accessibility Profile for inclusion of Persons with Disabilities as Employees</h3>
+
+          <!-- checkbox -->
+          <div class="flex flex-wrap -mx-4">
+            <div class="w-full px-4">
+                <div class="flex items-center">
+                    <input name="DisabilitiesFacility" id="chkDisabilitiesFacility" value="1" type="checkbox" class="form-checkbox text-blue-600" [(ngModel)]="facilitiesForDisabilities">
+                    <label for="chkDisabilitiesFacility" class="ml-2 text-normal text-gray-800 font-bold">
+                        Facilities for Person with Disabilities
+                    </label>
+                </div>            
+            </div>
+        </div>
+
+        <!-- if enabled -->
+        @if (facilitiesForDisabilities==true) {
+        <!-- <div id="DisabilityPanel" class="block"> -->
+          <div  id="DisabilityPanel" class="block">
+            <!-- questions -->
+            <div class="row flex flex-wrap -mx-4 mt-4">
+              <div class="col-sm-12 w-full px-4">
+                  <div class="form-group mb-5">
+                      <fieldset>
+                          <legend class="mb-2">Do you have Disability Inclusion Policy</legend>
+                          <label class="radio-inline mr-4" for="disabilityInclusRadPol1">
+                              <input type="radio" name="disabilityInclusRadPol" id="disabilityInclusRadPol1" value="1">
+                              <span class="ml-1">Yes</span>
+                          </label>
+                          <label class="radio-inline mr-4" for="disabilityInclusRadPol2">
+                              <input type="radio" name="disabilityInclusRadPol" id="disabilityInclusRadPol2" value="2">
+                              <span class="ml-1">No</span>
+                          </label>
+                      </fieldset>
+                  </div>
+              </div>
+          </div>
+          <div class="row flex flex-wrap -mx-4 hide" id="showSupportImplementing">
+              <div class="col-sm-12 w-full px-4">
+                  <div class="form-group mb-5">
+                      
+                          <fieldset>
+                              <legend class="mb-2">Would you like to have any support for implementing?</legend>
+                              <label class="radio-inline mr-4" for="disabilityInclusRadPol3">
+                                  <input type="radio" name="disabilityInclusRadPolSupport" id="disabilityInclusRadPol3" value="1">
+                                  <span class="ml-1">Yes</span>
+                              </label>
+                              <label class="radio-inline mr-4" for="disabilityInclusRadPol4">
+                                  <input type="radio" name="disabilityInclusRadPolSupport" id="disabilityInclusRadPol4" value="2">
+                                  <span class="ml-1">No</span>
+                              </label>
+                          </fieldset>
+                      
+                  </div>
+              </div>
+          </div>
+  
+          <app-disability-inclusion></app-disability-inclusion>
+            </div>
+        }
+
+
+          </div>
+        </section>
+        <!-- link -->
+        <div class="mb-6 font-sans text-base text-gray-800 leading-6">
+          To learn more about 
+          <a href="https://corporate3.bdjobs.com/disability-inclusion-practices.asp" target="_blank" class="text-blue-600">
+              Disability Inclusion Practices at Workplace
+          </a>
+      </div>
+      
+        <hr>
     </form>
   </div>
