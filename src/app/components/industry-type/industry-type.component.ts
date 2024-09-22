@@ -1,14 +1,16 @@
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-industry-type',
   standalone: true,
-  imports: [],
+  imports:[FormsModule],
   templateUrl: './industry-type.component.html',
-  styleUrl: './industry-type.component.scss'
+  styleUrls: ['./industry-type.component.scss']
 })
 export class IndustryTypeComponent {
   selectedCategory: string = '';
+  searchQuery: string = '';
 
   types = [
     { label: 'Dairy', value: 'Agro' },
@@ -20,14 +22,24 @@ export class IndustryTypeComponent {
   ];
 
   getTypes() {
-    if (this.selectedCategory === 'Others' || this.selectedCategory === '') {
-      return this.types;
-    } else {
-      return this.types.filter(type => type.value === this.selectedCategory);
+    let filteredTypes = this.selectedCategory === 'Others' || this.selectedCategory === ''
+      ? this.types
+      : this.types.filter(type => type.value === this.selectedCategory);
+
+    if (this.searchQuery) {
+      filteredTypes = filteredTypes.filter(type => 
+        type.label.toLowerCase().includes(this.searchQuery.toLowerCase())
+      );
     }
+
+    return filteredTypes;
   }
 
   onCategoryChange(event: any) {
     this.selectedCategory = event.target.value;
+    this.searchQuery = ''; 
+  }
+
+  onSearchQueryChange() {
   }
 }

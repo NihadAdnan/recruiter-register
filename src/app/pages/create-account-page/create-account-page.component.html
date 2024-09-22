@@ -130,47 +130,47 @@
         <div class="w-full sm:w-1/2 px-4">
             <div class="mb-4">
                 <app-input-field
-                label="Business/ Trade License No"
-                name="business_license_no"
-                id="business_license_no"
-                placeholder="Business/ Trade License No"
-                [maxLength]="30"
-                [value]="''"
-                [isRequired]="false">
-              </app-input-field>
+                    label="Business/ Trade License No"
+                    name="business_license_no"
+                    id="business_license_no"
+                    placeholder="Business/ Trade License No"
+                    [maxLength]="30"
+                    [value]="''"
+                    [isRequired]="false">
+                </app-input-field>
             </div>
         </div>
         <div class="w-full sm:w-1/2 px-4">
             <div class="mb-4">
-              <div class="flex">
-                <!-- problem in style -->
-                <span class="inline-flex items-center px-3 text-sm text-gray-500 bg-gray-100 border border-r-0 border-gray-300 rounded-l-md">RL -</span>
-                <app-input-field
-                label="RL No (Only for Recruiting Agency)"
-                name="rl_no"
-                id="rl_no"
-                placeholder="Enter Number Only"
-                [maxLength]="6"
-                [value]="''"
-                [isRequired]="false">
-              </app-input-field>
-              </div>
+                <div class="flex items-center">
+                    <span class="px-3 h-8 mt-3 text-sm text-gray-500 bg-gray-100 border border-r-0 border-gray-300 rounded-l-md">RL -</span>
+                    <app-input-field
+                        label="RL No (Only for Recruiting Agency)"
+                        name="rl_no"
+                        id="rl_no"
+                        placeholder="Enter Number Only"
+                        [maxLength]="6"
+                        [value]="''"
+                        [isRequired]="false">
+                    </app-input-field>
+                </div>
             </div>
         </div>
         <div class="w-full px-4">
             <div class="mb-4">
                 <app-input-field
-                label="Website URL"
-                name="website_url"
-                id="website_url"
-                placeholder="Type Website URL"
-                [maxLength]="50"
-                [value]="''"
-                [isRequired]="false">
-              </app-input-field>
+                    label="Website URL"
+                    name="website_url"
+                    id="website_url"
+                    placeholder="Type Website URL"
+                    [maxLength]="50"
+                    [value]="''"
+                    [isRequired]="false">
+                </app-input-field>
             </div>
         </div>
-    </div>    
+    </div>
+       
       </section>
       <hr>
 
@@ -315,10 +315,10 @@
         <hr>
 
         <!-- verification -->
-         <!-- problem in grid -->
         <section class="my-6">
           <p class="text-lg font-semibold mb-4">Verification Code</p>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          
+          <div class="w-1/2 grid grid-cols-1 md:grid-cols-2 gap-4">
             <div class="col-span-1">
               <app-captcha></app-captcha>
             </div>
@@ -333,6 +333,7 @@
               ></app-input-field>
             </div>
           </div>
+
           <div class="mt-6">
             <h4 class="cursor-pointer border-separate box-border font-inherit leading-[1.1] text-inherit text-lg font-bold inline-block m-0">
               Pricing Policy of Bdjobs.com recruitment services
@@ -342,7 +343,8 @@
                 <input name="policy_accept" 
                        id="policy_accept" 
                        type="checkbox" 
-                       class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-offset-0 focus:ring-2 cursor-pointer" [(ngModel)]="isPolicyAccepted">
+                       [(ngModel)]="isPolicyAccepted"
+                       class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-offset-0 focus:ring-2 cursor-pointer">
               </div>
               <div class="ml-3">
                 <label for="policy_accept" 
@@ -354,14 +356,15 @@
           </div>
         </section>
         <hr>
-        <!-- submit button (Problem in working) -->
+        <!-- submit button -->
+         
         <section class="mt-8">
           <div class="text-right">
-            <button class="box-border m-0 font-inherit overflow-visible text-center text-base font-normal leading-normal align-middle whitespace-nowrap touch-manipulation select-none border border-transparent rounded cursor-not-allowed opacity-65 inline-flex items-center bg-green-700 text-white text-lg px-5 py-3 shadow-md transition duration-300 ease-linear" 
+            <button (click)="onContinue()" 
                     [disabled]="!isPolicyAccepted" 
-      (click)="onContinue()">
+                    class="box-border m-0 font-inherit overflow-visible text-center text-base font-normal leading-normal align-middle whitespace-nowrap touch-manipulation select-none border border-transparent rounded inline-flex items-center bg-green-700 text-white text-lg px-5 py-3 shadow-md transition duration-300 ease-linear"
+                    [ngClass]="{'cursor-not-allowed opacity-65': !isPolicyAccepted}">
               Continue 
-              <i class="icon-angle-right"></i>
             </button>
           </div>          
         </section>

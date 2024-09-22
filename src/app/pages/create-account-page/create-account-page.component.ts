@@ -6,11 +6,12 @@ import { CompanyAddressComponent } from '../../components/company-address/compan
 import { DisabilityInclusionComponent } from '../../components/disability-inclusion/disability-inclusion.component';
 import { FormsModule } from '@angular/forms';
 import { CaptchaComponent } from "../../components/captcha/captcha.component";
+import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-create-account-page',
   standalone: true,
-  imports: [AppComponent, InputFieldComponent, IndustryTypeComponent, CompanyAddressComponent, DisabilityInclusionComponent, FormsModule, CaptchaComponent],
+  imports: [AppComponent, InputFieldComponent, IndustryTypeComponent, CompanyAddressComponent, DisabilityInclusionComponent, FormsModule, CaptchaComponent, NgClass],
   templateUrl: './create-account-page.component.html',
   styleUrl: './create-account-page.component.scss'
 })
@@ -20,6 +21,6 @@ export class CreateAccountPageComponent {
 
 
   onContinue() {
-    this.isPolicyAccepted = true;
+    this.isPolicyAccepted=true;
     }
 }
